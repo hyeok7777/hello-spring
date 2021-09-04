@@ -37,14 +37,14 @@ public class MemberService {
      * 회원 찾기
      */
     public Optional<Member> findOne(Long memberId) {
-        return memberRepository.findbyId(memberId);
+        return memberRepository.findById(memberId);
     }
 
     /**
      * 중복회원 찾기
      */
     private void validateDupulicateMember(Member member) {
-        Optional<Member> result = memberRepository.findbyName(member.getName());
+        Optional<Member> result = memberRepository.findByName(member.getName());
         result.ifPresent(m -> {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
